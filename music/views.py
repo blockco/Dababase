@@ -12,11 +12,15 @@ class DabListView(ListView):
     context_object_name = "all_dabs"
     
     def get_queryset(self):
-        return dab.objects.order_by("timestamp")[:20]
+        return dab.objects.all()
         
 class DabCreateView(CreateView):
     form_class = DabModelForm
+    context_object_name = "all_dabs"
     template_name = 'music/dab_create.html'
+    
+    def get_queryset(self):
+        return dab.objects.all()
 # def index(request):
 #     all_dabs = dab.objects.all()
 #     return render(request, 'music/index.html', {'all_dabs': all_dabs})

@@ -1,28 +1,63 @@
+<html lang="en">
 {% extends 'music/home.html' %}
+{% load static %}
 
-{% block content %}   
+{% block content %}
+
+<head>
+	<title>Dababase</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="userstyle.css">-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+	<style>
+
+		img.bg {
+			/* Set rules to fill background */
+			min-height: 100%;
+			min-width: 1024px;
+
+			/* Set up proportionate scaling */
+			width: 100%;
+			height: auto;
+
+			/* Set up positioning */
+			position: fixed;
+			top: 0;
+			left: 0;
+		}
+
+		@media screen and (max-width: 1024px){
+			img.bg {
+				left: 50%;
+				margin-left: -512px; }
+		}
+
+		#page-wrap { position: relative; width: 400px; margin: 50px auto; padding: 20px; background: transparent;}
+		p { font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
+
+        #page-wrap2 { position: relative; width: 400px; margin: 50px auto; padding: 20px; background: white; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px SandyBrown; }
+		p2 { font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
+	</style>
+</head>
+
+<body>
     
-    <div class="row">
-        <div class='col-sm-12'>
-            <div class='text-center' style='font-size:300%;'><u>Dabs</u></div>
-            <hr/>
-            <br/>
-            <div class='col-sm-12'>
-                <a href="{% url 'music:create' %}" class="btn btn-default btn-lg btn-block" role="button">Create Dab</a>
-                <br/>
-            </div>
-            {% for dab in all_dabs%}
-            <div class="col-sm-9" style="font-size:200%;">
-                <div class="thumbnail" style="color:black;">
-                    <div id="caption">
-                        <b>{{ dab.handle }}</b>
-                        <hr/>
-                    </div>
-                <h4>{{ dab.size }}</h4>
-                <h6>{{ dab.timestamp }}</h6>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+    
+    <img src="{% static 'music/images/bg.jpg' %}" class="bg">
+    <div id="page-wrap">
+        <a href="{% url 'music:create' %}" class="btn btn-default btn-lg btn-block" role="button">Create Dab</a>
     </div>
+	{% for dab in all_dabs%}
+	
+	<div id="page-wrap2">
+	<p2><u>{{ dab.handle }}</u></p2>
+	<p2><center>{{ dab.size }}</center>
+	<small class="form-text text-muted">{{ dab.timestamp }}</small>
+	</div>
+	{% endfor %}
+</body>
 {% endblock content %}

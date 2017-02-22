@@ -19,8 +19,8 @@ class DabModelForm(forms.ModelForm):
     #     self.helper.form_action = 'tricks:list'
     #     self.helper.helper.add_input(Submit('submit', 'Submit'))
 
-    def clean_content(self, *args, **kwargs):
-        content = self.cleaned_data.get("content")
-        if content == "abc":
-            raise forms.ValidationError("Cannot be ABC")
-        return content
+    # def clean_content(self, *args, **kwargs):
+    #     content = self.cleaned_data.get("content")
+    #     if content == "abc":
+    #         raise forms.ValidationError("Cannot be ABC")
+    #     return content

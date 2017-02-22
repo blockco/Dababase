@@ -27,7 +27,10 @@ class song(models.Model):
 class dab(models.Model):
     handle = models.CharField(max_length=250)
     size = models.CharField(max_length=250)
-    timestamp = models.DateTimeField(default=timezone.now)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    
+    class Meta():
+        ordering = ['-timestamp']
     
     def __str__(self):
         return self.handle

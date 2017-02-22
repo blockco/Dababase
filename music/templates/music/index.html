@@ -1,0 +1,9 @@
+{% if all_dabs %}
+    <ul>
+        {% for dab in all_dabs %}
+        <li>{{ dab.handle }} {{ dab.size }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>No DABS</h3>
+{% endif %}

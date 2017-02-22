@@ -1,0 +1,28 @@
+{% extends 'music/home.html' %}
+
+{% block content %}   
+    
+    <div class="row">
+        <div class='col-sm-12'>
+            <div class='text-center' style='font-size:300%;'><u>Dabs</u></div>
+            <hr/>
+            <br/>
+            <div class='col-sm-12'>
+                <a href="{% url 'music:create' %}" class="btn btn-default btn-lg btn-block" role="button">Create Dab</a>
+                <br/>
+            </div>
+            {% for dab in all_dabs%}
+            <div class="col-sm-9" style="font-size:200%;">
+                <div class="thumbnail" style="color:black;">
+                    <div id="caption">
+                        <b>{{ dab.handle }}</b>
+                        <hr/>
+                    </div>
+                <h4>{{ dab.size }}</h4>
+                <h6>{{ dab.timestamp }}</h6>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

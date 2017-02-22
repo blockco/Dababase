@@ -1,0 +1,20 @@
+{% extends 'music/home.html' %}
+{% block title %}Create Dab | {{ block.super }}{% endblock title %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class='row'>
+    <div class='col-sm-8 col-sm-offset-2'>
+        <h1>Create Dab</h1>
+        {% for feild in form %}
+            <div class='fieldWrapper'>
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% include "music/form.html" with form=form btn_title='Submit Dab' %}
+    </div>
+</div>
+{% endblock content %}
